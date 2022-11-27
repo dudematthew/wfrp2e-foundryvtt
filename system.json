@@ -1,10 +1,16 @@
 {
-  "name": "wfrp2e",
-  "title": "Warhammer Fantasy Roleplay 4th Edition",
+  "id": "wfrp2e-foundryvtt",
+  "title": "Warhammer Fantasy Roleplay 2nd Edition",
   "description": "A comprehensive system for running grim and perilous games of Warhammer Fantasy Roleplay in the Foundry VTT environment.",
-  "version": "0.1.1",
-  "author": "Moo Man, CatoThe1stElder",
+  "version": "0.1.2",
+  "author": "dudematthew, Moo Man, CatoThe1stElder",
   "authors" : [
+    {
+      "name": "dudematthew",
+      "url": "https://github.com/dudematthew",
+      "email": "mmoczydlowski4@gmail.com",
+      "discord": "HipsterSavage#8629"
+    },
     {
       "name": "Moo Man",
       "email": "russellthurman94@gmail.com",
@@ -365,6 +371,11 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json"
     }
   ],
   "media": [
@@ -373,9 +384,10 @@
       "url": "https://user-images.githubusercontent.com/28637157/97379891-e4a1cc00-1893-11eb-9e0c-d93b92844d5b.jpg"
     }
   ],
+  "socket": true,
   "initiative": "@characteristics.i.value + @characteristics.ag.value/100",
-  "background" : "./WFRP-Header.jpg",
   "gridDistance": 2,
+  "background" : "./WFRP-Header.jpg",
   "gridUnits": "yd",
   "primaryTokenAttribute": "status.wounds",
   "secondaryTokenAttribute": "status.advantage",
@@ -383,8 +395,7 @@
   "compatibleCoreVersion" : "9",
   "manifestPlusVersion": "1.0.0",
   "templateVersion":3,
-  "socket": true,
-  "manifest" :  "https://raw.githubusercontent.com/moo-man/wfrp2e-FoundryVTT/master/system.json",
-  "download" :  "https://github.com/moo-man/wfrp2e-FoundryVTT/releases/download/0.1.1/wfrp2e.zip",
-  "url" : "https://github.com/moo-man/wfrp2e-FoundryVTT"
+  "manifest" :  "https://raw.githubusercontent.com/dudematthew/wfrp2e-foundryvtt/master/system.json",
+  "download" :  "https://github.com/dudematthew/wfrp2e-foundryvtt/currently-none",
+  "url" : "https://github.com/dudematthew/wfrp2e-foundryvtt"
 }
