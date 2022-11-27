@@ -1,10 +1,16 @@
 {
-  "name": "wfrp2e",
+  "id": "wfrp2e-foundryvtt",
   "title": "Warhammer Fantasy Roleplay 4th Edition",
   "description": "A comprehensive system for running grim and perilous games of Warhammer Fantasy Roleplay in the Foundry VTT environment.",
-  "version": "0.1.1",
-  "author": "Moo Man, CatoThe1stElder",
+  "version": "0.1.2",
+  "author": "dudematthew, Moo Man, CatoThe1stElder",
   "authors" : [
+    {
+      "name": "dudematthew",
+      "url": "https://github.com/dudematthew",
+      "email": "mmoczydlowski4@gmail.com",
+      "discord": "HipsterSavage#8629"
+    },
     {
       "name": "Moo Man",
       "email": "russellthurman94@gmail.com",
@@ -365,6 +371,11 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json"
     }
   ],
   "media": [
