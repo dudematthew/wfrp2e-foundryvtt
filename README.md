@@ -1,4 +1,4 @@
-WFRP2e Foundry conversion from WFRP2E
+WFRP2e [Foundry](https://foundryvtt.com/) conversion from [WFRP2E](http://khorne.ru/2nd/wfrp_web/Core.pdf) 
 
 ## This is currently NOT working with the newest version of Foundry *(which is v10)*.
 
