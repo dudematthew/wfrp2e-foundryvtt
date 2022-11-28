@@ -3,6 +3,11 @@
   "title": "Warhammer Fantasy Roleplay 2nd Edition",
   "description": "A comprehensive system for running grim and perilous games of Warhammer Fantasy Roleplay in the Foundry VTT environment.",
   "version": "0.1.2",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10",
+    "maximum": "10" 
+  },
   "author": "dudematthew, Moo Man, CatoThe1stElder",
   "authors" : [
     {
@@ -371,11 +376,6 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-    },
-    {
-      "lang": "pl",
-      "name": "Polish",
-      "path": "lang/pl.json"
     }
   ],
   "media": [
@@ -391,10 +391,8 @@
   "gridUnits": "yd",
   "primaryTokenAttribute": "status.wounds",
   "secondaryTokenAttribute": "status.advantage",
-  "minimumCoreVersion" : "9",
-  "compatibleCoreVersion" : "9",
-  "manifestPlusVersion": "1.0.0",
-  "templateVersion":3,
+  "minimumCoreVersion" : "10",
+  "compatibleCoreVersion" : "10",
   "manifest" :  "https://raw.githubusercontent.com/dudematthew/wfrp2e-foundryvtt/master/system.json",
   "download" :  "https://github.com/dudematthew/wfrp2e-foundryvtt/currently-none",
   "url" : "https://github.com/dudematthew/wfrp2e-foundryvtt"

@@ -1,4 +1,5 @@
 import WFRP_Utility from "../system/utility-wfrp2e.js";
+import travel_data from "../data/travel_data.json" assert {type: 'json'};
 
 
 /**
@@ -12,24 +13,28 @@ export default class TravelDistanceWfrp2e {
     * This method load the travel data from the internal JSON file
     */
     static async loadTravelData() {
-        FilePicker.browse("data", `systems/wfrp2e/modules/apps`).then(resp => {
+      this.travel_data = travel_data;
 
-        for (var file of resp.files) {
-          try {
-            if (!file.includes(".json"))
-              continue
-            let filename = file.substring(file.lastIndexOf("/") + 1, file.indexOf(".json"));
+      /**
+       * Old approach, don't mind bad practices
+       */
+      // FilePicker.browse("data", `systems/wfrp2e/modules/apps`).then(resp => {
+      //   for (var file of resp.files) {
+      //     try {
+      //       if (!file.includes(".json"))
+      //         continue
+      //       let filename = file.substring(file.lastIndexOf("/") + 1, file.indexOf(".json"));
 
-            fetch(file).then(r => r.json()).then(async records => {
-                this.travel_data = records;
-            })
-          }
-          catch (error) {
-            console.error("Error reading " + file + ": " + error)
-          }
-        }
-    });
-  }
+      //       fetch(file).then(r => r.json()).then(async records => {
+      //           this.travel_data = records;
+      //       })
+      //     }
+      //     catch (error) {
+      //       console.error("Error reading " + file + ": " + error)
+      //     }
+      //   }
+      // });
+    }
 
   /**
    * Returns a human-readable danger level for the road

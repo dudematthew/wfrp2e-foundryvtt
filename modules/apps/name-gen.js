@@ -4,164 +4,192 @@
  * See the `names` folder in the system directory to examine the list of names and options.
  */
 
+import surnames from "../../names/human_surnames.json" assert {type: 'json'};
+import surnamePrefixes from "../../names/human_surnames_suffix.json" assert {type: 'json'};
+import surnameSuffixes from "../../names/male_human_forenames.json" assert {type: 'json'};
+import human_male_Forenames from "../../names/female_human_forenames.json" assert {type: 'json'};
+import human_female_Forenames from "../../names/male_dwarf_forenames.json" assert {type: 'json'};
+import dwarf_male_Forenames from "../../names/female_dwarf_forenames.json" assert {type: 'json'};
+import dwarf_female_Forenames from "../../names/elf_forenames.json" assert {type: 'json'};
+import elf_Forenames from "../../names/elf_surnames.json" assert {type: 'json'};
+import elf_start from "../../names/elf_start.json" assert {type: 'json'};
+import elf_connectors from "../../names/elf_connectors.json" assert {type: 'json'};
+import elf_male_element from "../../names/male_elf_element.json" assert {type: 'json'};
+import elf_female_element from "../../names/female_elf_element.json" assert {type: 'json'};
+import elf_wood_end from "../../names/elf_wood_end.json" assert {type: 'json'};
+import elf_high_end from "../../names/elf_high_end.json" assert {type: 'json'};
+import halfling_start from "../../names/halfling_start.json" assert {type: 'json'};
+import male_halfling_element from "../../names/male_halfling_element.json" assert {type: 'json'};
+import female_halfling_element from "../../names/female_halfling_element.json" assert {type: 'json'};
+import halfling_surnames from "../../names/halfling_surnames.json" assert {type: 'json'};
+import halfling_nicknames from "../../names/halfling_nicknames.json" assert {type: 'json'};
+
+
 export default class NameGenWfrp {
   static _loadNames() {
     console.log("wfrp2e | Loading Names...")
 
-    // Surname option 1
-    fetch("systems/wfrp2e/names/human_surnames.txt").then(r => r.text()).then(async nameText => {
-      this.surnames = []
-      nameText.split("\n").forEach((nameGroup) => this.surnames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // Surname option 2 - prefix
-    fetch("systems/wfrp2e/names/human_surnames_prefix.txt").then(r => r.text()).then(async nameText => {
-      this.surnamePrefixes = []
-      nameText.split("\n").forEach((nameGroup) => this.surnamePrefixes.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // Surname option 2 - suffix
-    fetch("systems/wfrp2e/names/human_surnames_suffix.txt").then(r => r.text()).then(async nameText => {
-      this.surnameSuffixes = []
-      nameText.split("\n").forEach((nameGroup) => this.surnameSuffixes.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // Male forenames
-    fetch("systems/wfrp2e/names/male_human_forenames.txt").then(r => r.text()).then(async nameText => {
-      this.human_male_Forenames = []
-      nameText.split("\n").forEach((nameGroup) => this.human_male_Forenames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // Female forenames
-    fetch("systems/wfrp2e/names/female_human_forenames.txt").then(r => r.text()).then(async nameText => {
-      this.human_female_Forenames = []
-      nameText.split("\n").forEach((nameGroup) => this.human_female_Forenames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // @@@@@@@@@@ DWARF @@@@@@@@@@@@@
-    // male forenames
-    fetch("systems/wfrp2e/names/male_dwarf_forenames.txt").then(r => r.text()).then(async nameText => {
-      this.dwarf_male_Forenames = []
-      nameText.split("\n").forEach((nameGroup) => this.dwarf_male_Forenames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // Female forenames
-    fetch("systems/wfrp2e/names/female_dwarf_forenames.txt").then(r => r.text()).then(async nameText => {
-      this.dwarf_female_Forenames = []
-      nameText.split("\n").forEach((nameGroup) => this.dwarf_female_Forenames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // @@@@@@@@@@ ELF @@@@@@@@@@@@@
-    // elf forenames
-    fetch("systems/wfrp2e/names/elf_forenames.txt").then(r => r.text()).then(async nameText => {
-      this.elf_Forenames = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_Forenames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    fetch("systems/wfrp2e/names/elf_surnames.txt").then(r => r.text()).then(async nameText => {
-      this.elf_surnames = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_surnames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // elf start
-    fetch("systems/wfrp2e/names/elf_start.txt").then(r => r.text()).then(async nameText => {
-      this.elf_start = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_start.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // elf connector
-    fetch("systems/wfrp2e/names/elf_connectors.txt").then(r => r.text()).then(async nameText => {
-      this.elf_connectors = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_connectors.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // female elf element
-    fetch("systems/wfrp2e/names/male_elf_element.txt").then(r => r.text()).then(async nameText => {
-      this.elf_male_element = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_male_element.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // male elf element
-    fetch("systems/wfrp2e/names/female_elf_element.txt").then(r => r.text()).then(async nameText => {
-      this.elf_female_element = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_female_element.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // wood elf end
-    fetch("systems/wfrp2e/names/elf_wood_end.txt").then(r => r.text()).then(async nameText => {
-      this.elf_wood_end = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_wood_end.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // high elf end
-    fetch("systems/wfrp2e/names/elf_high_end.txt").then(r => r.text()).then(async nameText => {
-      this.elf_high_end = []
-      nameText.split("\n").forEach((nameGroup) => this.elf_high_end.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // @@@@@@@@@@ Halfling @@@@@@@@@@@@@
-    // Halfling start
-    fetch("systems/wfrp2e/names/halfling_start.txt").then(r => r.text()).then(async nameText => {
-      this.halfling_start = []
-      nameText.split("\n").forEach((nameGroup) => this.halfling_start.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-
-    // Male ending
-    fetch("systems/wfrp2e/names/male_halfling_element.txt").then(r => r.text()).then(async nameText => {
-      this.male_halfling_element = []
-      nameText.split("\n").forEach((nameGroup) => this.male_halfling_element.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // Female ending
-    fetch("systems/wfrp2e/names/female_halfling_element.txt").then(r => r.text()).then(async nameText => {
-      this.female_halfling_element = []
-      nameText.split("\n").forEach((nameGroup) => this.female_halfling_element.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // Halfling surnames
-    fetch("systems/wfrp2e/names/halfling_surnames.txt").then(r => r.text()).then(async nameText => {
-      this.halfling_surnames = []
-      nameText.split("\n").forEach((nameGroup) => this.halfling_surnames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
-    // Halfling nicknames
-    fetch("systems/wfrp2e/names/halfling_nicknames.txt").then(r => r.text()).then(async nameText => {
-      this.halfling_nicknames = []
-      nameText.split("\n").forEach((nameGroup) => this.halfling_nicknames.push(nameGroup.split(",").map(function (item) {
-        return item.trim()
-      })))
-    })
+  //   // Surname option 1
+  //   fetch("systems/wfrp2e/names/human_surnames.txt").then(r => r.text()).then(async nameText => {
+  //     this.surnames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.surnames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.surnames = surnames;
+  //   // Surname option 2 - prefix
+  //   fetch("systems/wfrp2e/names/human_surnames_prefix.txt").then(r => r.text()).then(async nameText => {
+  //     this.surnamePrefixes = []
+  //     nameText.split("\n").forEach((nameGroup) => this.surnamePrefixes.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.surnamePrefixes = surnamePrefixes;
+  //   // Surname option 2 - suffix
+  //   fetch("systems/wfrp2e/names/human_surnames_suffix.txt").then(r => r.text()).then(async nameText => {
+  //     this.surnameSuffixes = []
+  //     nameText.split("\n").forEach((nameGroup) => this.surnameSuffixes.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.surnameSuffixes = surnameSuffixes;
+  //   // Male forenames
+  //   fetch("systems/wfrp2e/names/male_human_forenames.txt").then(r => r.text()).then(async nameText => {
+  //     this.human_male_Forenames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.human_male_Forenames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.human_male_Forenames = human_male_Forenames;
+  //   // Female forenames
+  //   fetch("systems/wfrp2e/names/female_human_forenames.txt").then(r => r.text()).then(async nameText => {
+  //     this.human_female_Forenames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.human_female_Forenames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.human_female_Forenames = human_female_Forenames;
+  //   // @@@@@@@@@@ DWARF @@@@@@@@@@@@@
+  //   // male forenames
+  //   fetch("systems/wfrp2e/names/male_dwarf_forenames.txt").then(r => r.text()).then(async nameText => {
+  //     this.dwarf_male_Forenames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.dwarf_male_Forenames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.dwarf_male_Forenames = dwarf_male_Forenames;
+  //   // Female forenames
+  //   fetch("systems/wfrp2e/names/female_dwarf_forenames.txt").then(r => r.text()).then(async nameText => {
+  //     this.dwarf_female_Forenames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.dwarf_female_Forenames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.dwarf_female_Forenames = dwarf_female_Forenames;
+  //   // @@@@@@@@@@ ELF @@@@@@@@@@@@@
+  //   // elf forenames
+  //   fetch("systems/wfrp2e/names/elf_forenames.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_Forenames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_Forenames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_Forenames = elf_Forenames;
+  //   fetch("systems/wfrp2e/names/elf_surnames.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_surnames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_surnames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  //   // elf start
+  //   fetch("systems/wfrp2e/names/elf_start.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_start = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_start.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_start = elf_start;
+  //   // elf connector
+  //   fetch("systems/wfrp2e/names/elf_connectors.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_connectors = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_connectors.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_connectors = elf_connectors;
+  //   // female elf element
+  //   fetch("systems/wfrp2e/names/male_elf_element.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_male_element = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_male_element.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_male_element = elf_male_element;
+  //   // male elf element
+  //   fetch("systems/wfrp2e/names/female_elf_element.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_female_element = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_female_element.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_female_element = elf_female_element;
+  //   // wood elf end
+  //   fetch("systems/wfrp2e/names/elf_wood_end.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_wood_end = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_wood_end.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_wood_end = elf_wood_end;
+  //   // high elf end
+  //   fetch("systems/wfrp2e/names/elf_high_end.txt").then(r => r.text()).then(async nameText => {
+  //     this.elf_high_end = []
+  //     nameText.split("\n").forEach((nameGroup) => this.elf_high_end.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.elf_high_end = elf_high_end;
+  //   // @@@@@@@@@@ Halfling @@@@@@@@@@@@@
+  //   // Halfling start
+  //   fetch("systems/wfrp2e/names/halfling_start.txt").then(r => r.text()).then(async nameText => {
+  //     this.halfling_start = []
+  //     nameText.split("\n").forEach((nameGroup) => this.halfling_start.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.halfling_start = halfling_start;
+  //   // Male ending
+  //   fetch("systems/wfrp2e/names/male_halfling_element.txt").then(r => r.text()).then(async nameText => {
+  //     this.male_halfling_element = []
+  //     nameText.split("\n").forEach((nameGroup) => this.male_halfling_element.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.male_halfling_element = male_halfling_element;
+  //   // Female ending
+  //   fetch("systems/wfrp2e/names/female_halfling_element.txt").then(r => r.text()).then(async nameText => {
+  //     this.female_halfling_element = []
+  //     nameText.split("\n").forEach((nameGroup) => this.female_halfling_element.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.female_halfling_element = female_halfling_element;
+  //   // Halfling surnames
+  //   fetch("systems/wfrp2e/names/halfling_surnames.txt").then(r => r.text()).then(async nameText => {
+  //     this.halfling_surnames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.halfling_surnames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.halfling_surnames = halfling_surnames;
+  //   // Halfling nicknames
+  //   fetch("systems/wfrp2e/names/halfling_nicknames.txt").then(r => r.text()).then(async nameText => {
+  //     this.halfling_nicknames = []
+  //     nameText.split("\n").forEach((nameGroup) => this.halfling_nicknames.push(nameGroup.split(",").map(function (item) {
+  //       return item.trim()
+  //     })))
+  //   })
+  this.halfling_nicknames = halfling_nicknames;
   }
 
   static human = {
